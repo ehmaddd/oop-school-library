@@ -1,0 +1,23 @@
+# frozen_string_literal: true
+
+# Parent class of student and teacher
+class Person
+  attr_accessor :name, :age
+  attr_reader :id
+
+  def initialize(age, name = 'Unknown', parent_permission: true)
+    @name = name
+    @age = age
+    @parent_permission = parent_permission
+  end
+
+  def can_use_services?
+    return true if of_age? || parent_permission
+  end
+
+  private
+
+  def of_age?
+    age >= 18
+  end
+end
