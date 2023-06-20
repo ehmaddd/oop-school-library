@@ -1,6 +1,3 @@
-# frozen_string_literal: true
-
-# Teacher class extending Person
 class Teacher < Person
   def initialize(age, specialization, name)
     super(age, name)
