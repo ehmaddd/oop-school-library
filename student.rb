@@ -1,10 +1,22 @@
-class Student < Person
-  def initialize(age, classroom, name = 'Unknown', parent_permission: true)
-    super(age, name, parent_permission)
-    @classroom = classroom
-  end
+require_relative 'person'
 
-  def play_hocky
-    '¯\(ツ)/¯'
+module StudentClass
+  include PersonClass
+  class Student < Person
+    attr_reader :name
+
+    def initialize(age, classroom, name = 'Unknown', parent_permission: true)
+      super(age, name, parent_permission)
+      @classroom = classroom
+    end
+
+    def play_hocky
+      '¯\(ツ)/¯'
+    end
+
+    def classroom=(classroom)
+      @classroom = classroom
+      classroom.students.push(self) unless classroom.students.include?(self)
+    end
   end
 end
