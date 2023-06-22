@@ -1,5 +1,4 @@
 module ClassroomClass
-
   class Classroom
     attr_accessor :label
     attr_reader :students
@@ -14,5 +13,4 @@ module ClassroomClass
       student.classroom = self
     end
   end
-
 end

@@ -1,5 +1,4 @@
 module RentalClass
-
   class Rental
     attr_accessor :date
     attr_reader :book, :person
@@ -14,5 +13,4 @@ module RentalClass
       person.rentals << self
     end
   end
-
 end

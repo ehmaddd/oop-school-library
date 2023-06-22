@@ -1,5 +1,4 @@
 module BookClass
-
   class Book
     attr_accessor :title, :author
     attr_reader :rentals
@@ -10,5 +9,4 @@ module BookClass
       @rentals = []
     end
   end
-
 end

@@ -3,7 +3,6 @@ require_relative 'person'
 module StudentClass
   include PersonClass
   class Student < Person
-    attr_accessor :classroom
     attr_reader :name
 
     def initialize(age, classroom, name = 'Unknown', parent_permission: true)
@@ -20,5 +19,4 @@ module StudentClass
       classroom.students.push(self) unless classroom.students.include?(self)
     end
   end
-
 end
