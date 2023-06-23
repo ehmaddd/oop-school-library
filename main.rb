@@ -33,7 +33,6 @@ module MainApp
       end
     end
 
-
     def show_menu
       app = App.new
       loop do
