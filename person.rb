@@ -3,8 +3,8 @@ require_relative 'rental'
 
 module PersonClass
   include NameableClass
-  include RentalClass
   class Person < Nameable
+    include RentalClass
     attr_accessor :name, :age
     attr_reader :id, :rentals
 
