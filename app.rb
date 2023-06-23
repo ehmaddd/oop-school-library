@@ -85,7 +85,6 @@ module AppClass
 
       if number.to_i > @books.length - 1
         puts 'Book not found'
-        return
       else
         @books[number.to_i]
       end
