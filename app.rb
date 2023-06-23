@@ -87,7 +87,7 @@ module AppClass
         puts 'Book not found'
         return
       else
-        book = @books[number.to_i]
+        @books[number.to_i]
       end
     end
 
@@ -101,7 +101,7 @@ module AppClass
       if person_index.to_i > @people.length - 1
         puts 'Person not found'
       else
-        person = @people[person_index.to_i]
+        @people[person_index.to_i]
       end
     end
 
