@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 module LibraryClass
   class Library
     attr_reader :books
