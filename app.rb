@@ -78,7 +78,7 @@ module AppClass
       puts 'Book created successfully.'
     end
 
-    def create_rental
+    def select_book
       puts 'Select a book from the following list by number'
       @books.each_with_index { |b, idx| puts "#{idx}) Title: #{b.title}, Author: #{b.author}" }
       number = gets.chomp
@@ -89,7 +89,9 @@ module AppClass
       else
         book = @books[number.to_i]
       end
+    end
 
+    def select_person
       puts 'Select a person from the following list by number (not id)'
       @people.each_with_index do |p, idx|
         puts "#{idx}) [#{p.class.to_s.split('::').last}] Name: #{p.name}, ID: #{p.id}, Age: #{p.age} "
@@ -101,6 +103,11 @@ module AppClass
       else
         person = @people[person_index.to_i]
       end
+    end
+
+    def create_rental
+      book = select_book
+      person = select_person
 
       print 'Date : '
       date = gets.chomp
