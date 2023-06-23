@@ -133,7 +133,7 @@ module AppClass
         else
           puts 'Rentals :'
           rentals.each do |rental|
-            puts "Date: #{rental.date}, Book: \'#{rental.book.title}\' by #{rental.book.author}"
+            puts "Date: #{rental.date}, Book: \"#{rental.book.title}\" by #{rental.book.author}"
           end
         end
       end
