@@ -20,11 +20,12 @@ module AppClass
     end
 
     def list_all_people
-      @people.each { |person| puts "[#{person.class.to_s.split('::').last}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age} " }
+      @people.each do |person|
+        puts "[#{person.class.to_s.split('::').last}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age} "
+      end
     end
 
     def create_person
-
       print 'Do you want to create a student (1) or a teacher (2)? [Input the number] : '
       person_type = gets.chomp.downcase
 
@@ -46,7 +47,7 @@ module AppClass
     def create_student(name, age)
       print 'Has parent permission? [Y/N] : '
       permission = gets.chomp
-      if (permission == 'Y')
+      if permission == 'Y'
         student = Student.new(age, 'first', name)
         classroom = Classroom.new('first')
         classroom.add_student(student)
@@ -82,21 +83,23 @@ module AppClass
       @books.each_with_index { |b, idx| puts "#{idx}) Title: #{b.title}, Author: #{b.author}" }
       number = gets.chomp
 
-      if(number.to_i > @books.length-1)
+      if number.to_i > @books.length - 1
         puts 'Book not found'
         return
       else
-       book = @books[number.to_i]
+        book = @books[number.to_i]
       end
 
       puts 'Select a person from the following list by number (not id)'
-      @people.each_with_index { |p, idx| puts "#{idx}) [#{p.class.to_s.split('::').last}] Name: #{p.name}, ID: #{p.id}, Age: #{p.age} "}
+      @people.each_with_index do |p, idx|
+        puts "#{idx}) [#{p.class.to_s.split('::').last}] Name: #{p.name}, ID: #{p.id}, Age: #{p.age} "
+      end
       person_index = gets.chomp
 
-      if(person_index.to_i > @people.length-1)
+      if person_index.to_i > @people.length - 1
         puts 'Person not found'
       else
-       person = @people[person_index.to_i]
+        person = @people[person_index.to_i]
       end
 
       print 'Date : '
@@ -114,7 +117,7 @@ module AppClass
       person = @people.find { |p| p.id == person_id }
 
       if person.nil?
-        puts 'Person with ID #{person_id} not found.'
+        puts "Person with ID #{person_id} not found."
       else
         rentals = person.rentals
 
@@ -128,6 +131,5 @@ module AppClass
         end
       end
     end
-
   end
 end
