@@ -116,6 +116,11 @@ module AppClass
       puts 'Rental created successfully.'
     end
 
+    def exit_app
+      puts 'Thank you for using this app!'
+      exit
+    end
+
     def list_rentals_for_person
       puts 'ID of person : '
       person_id = gets.chomp.to_i
