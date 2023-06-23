@@ -41,7 +41,7 @@ module MainApp
   end
 
 
-    puts 'Welcome to School Library App!'
-    main = Main.new
-    main.show_menu
+  puts 'Welcome to School Library App!'
+  main = Main.new
+  main.show_menu
 end
