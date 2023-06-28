@@ -6,7 +6,8 @@ module StudentClass
     attr_reader :name
 
     def initialize(age, classroom, name = 'Unknown', _parent_permission: true)
-      super(age, name)
+      design = 'student'
+      super(age, design, name)
       @classroom = classroom
     end
 

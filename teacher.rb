@@ -2,7 +2,8 @@ module TeacherClass
   include PersonClass
   class Teacher < Person
     def initialize(age, specialization, name = 'Unknown', _parent_permission: true)
-      super(age, name)
+      design = 'teacher'
+      super(age, design, name)
       @specialization = specialization
     end
 

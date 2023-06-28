@@ -8,5 +8,13 @@ module BookClass
       @author = author
       @rentals = []
     end
+
+    def to_hash
+      {
+        title: @title,
+        author: @author,
+        rentals: @rentals
+      }
+    end
   end
 end
