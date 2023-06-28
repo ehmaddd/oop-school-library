@@ -40,7 +40,7 @@ module PersonClass
         name: @name,
         age: @age,
         design: @design,
-        rentals: @rentals
+        rentals: @rentals.map(&:to_hash)
       }
     end
 

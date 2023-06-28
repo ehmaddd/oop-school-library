@@ -3,6 +3,7 @@ require_relative 'student'
 require_relative 'teacher'
 require_relative 'classroom'
 require_relative 'preserve_data'
+require_relative 'person'
 
 module LibraryClass
   class Library
@@ -11,11 +12,12 @@ module LibraryClass
     include ClassroomClass
     include PreserveDataModule
     include TeacherClass
+    include PersonClass
 
     attr_reader :books
 
-    def initialize(books)
-      @members = []
+    def initialize(books, members)
+      @members = members
       @books = books
       @rentals = []
     end
@@ -37,27 +39,36 @@ module LibraryClass
 
     def get_book
       puts 'Select a book from the following list by number'
-      @books.each_with_index { |b, idx| puts "#{idx}) Title: #{b.title}, Author: #{b.author}" }
+      @books.each_with_index { |b, idx| puts "#{idx}) Title: #{b["title"]}, Author: #{b["author"]}" }
       number = gets.chomp
 
       if number.to_i > @books.length - 1
         puts 'Book not found'
       else
-        @books[number.to_i]
+        book = @books[number.to_i]
+        title = book["title"]
+        author = book["author"]
+        returnBook = Book.new(title, author)
+        returnBook
       end
     end
 
     def get_person
       puts 'Select a person from the following list by number (not id)'
       @members.each_with_index do |p, idx|
-        puts "#{idx}) [#{p.class.to_s.split('::').last}] Name: #{p.name}, ID: #{p.id}, Age: #{p.age} "
+        puts "#{idx}) [#{p["design"]} Name: #{p["name"]}, ID: #{p["id"]}, Age: #{p["age"]} "
       end
       person_index = gets.chomp
 
-      if person_index.to_i > @people.length - 1
+      if person_index.to_i > @members.length - 1
         puts 'Person not found'
       else
-        @members[person_index.to_i]
+        member = @members[person_index.to_i]
+        age = member["age"]
+        design = member["design"]
+        name = member["name"]
+        returnMember = Person.new(age, design, name)
+        returnMember
       end
     end
 
@@ -128,14 +139,15 @@ module LibraryClass
     end
 
     def generate_rental
-      book = select_book
-      person = select_person
+      book = get_book
+      person = get_person
 
       print 'Date : '
       date = gets.chomp
 
       rental = person.rent_book(book, date)
-      @rentals << rental
+      @rentals << JSON.parse(rental)
+      preserve_rental(@rentals.map(&:to_hash))
       puts 'Rental created successfully.'
     end
 

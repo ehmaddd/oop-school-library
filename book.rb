@@ -1,5 +1,8 @@
+require_relative 'rental'
+
 module BookClass
   class Book
+    include RentalClass
     attr_accessor :title, :author
     attr_reader :rentals
 
@@ -13,7 +16,7 @@ module BookClass
       {
         title: @title,
         author: @author,
-        rentals: @rentals
+        rentals: @rentals.map(&:to_hash)
       }
     end
   end

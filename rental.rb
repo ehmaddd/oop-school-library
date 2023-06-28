@@ -12,5 +12,13 @@ module RentalClass
       @person = person
       person.rentals << self
     end
+
+    def to_hash
+      {
+        book: @book.to_hash,
+        person: @person.to_hash,
+        date: @date
+      }
+    end
   end
 end

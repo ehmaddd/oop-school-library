@@ -30,6 +30,19 @@ module PreserveDataModule
     end
   end
 
+  def preserve_rental(rentals)
+    rental_file = "rentals.json"
+    if File.exist?(rental_file)
+      preserve_data = rentals.map(&:to_hash)
+      json = JSON.generate(preserve_data)
+      File.write(rental_file, json)
+    else
+      preserve_data = rentals.map(&:to_hash)
+      json = JSON.generate(preserve_data)
+      File.write(rental_file, json, mode: "a")
+    end
+  end
+
   def restore_books
     book = "book.json"
     if File.exist?(book)

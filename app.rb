@@ -8,7 +8,8 @@ module AppClass
     include PreserveDataModule
     def initialize
       books = restore_books
-      @library = Library.new(books)
+      members = restore_members
+      @library = Library.new(books, members)
     end
 
     def list_all_books

@@ -1,0 +1,1 @@
+[{"book":{"title":"Fire","author":"Musharraf","rentals":["#<RentalClass::Rental:0x00000188f2d657a0>"]},"person":{"id":369,"name":"Saeed","age":"35","design":"teacher","rentals":["#<RentalClass::Rental:0x00000188f2d657a0>"]},"date":"2023-06-23"}]
